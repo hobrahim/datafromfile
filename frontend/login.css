@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&family=Inter:wght@400;600&family=Lato&family=Manrope:wght@300;500&family=Montserrat&family=Plus+Jakarta+Sans:wght@400;500;700&family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@700&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+}
+  .container{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 100%;
+    width: 100%;
+  }
+  .board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+  }
+  .heading{
+    color: #FFF;
+    font-size: 72px;
+    font-family: "Montserrat", "san-serif";
+    height: 230px;
+
+    
+  }
+ 
+  .form_heading{
+    color: #000;
+    font-size: 36px;
+    margin-bottom: 5px;
+    font-family: "Montserrat", "san-serif";
+    
+  }
+  .form_subHeading{
+    color: #000;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+
+    margin-bottom: 34px;
+  }
+  .login_buttons{
+    display: flex;
+    gap: 25px;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 25px;
+ 
+  }
+  .button{
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10.5px;
+    padding: 8px 19px;
+    color: var(--secondary-text, #858585);
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+  }
+.button:hover{
+  color:black;
+}
+
+  .login{
+    height: 100vh;
+    /* background-color: #FFF; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: var(--background, #F5F5F5);
+  }
+  .login_card {
+    max-width: 385px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #FFF;
+  }
+  .form{
+    padding: 30px;
+  }
+  
+  .card_header {
+    text-align: center;
+    margin-bottom: 20px
+  }
+  .card_header .log {
+    margin: 0;
+    font-size: 24px;
+    color: black;
+  }
+  
+  
+  .label {
+    color: #000;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+
+
+  }
+  
+  .input[type="email"], .input[type="password"] {
+    width: 100%;
+    max-width: 325px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border:none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: var(--field-color-darker, #EAEAEA);
+
+
+  }
+  
+  .input[type="submit"] {
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    max-width: 325px;
+    height: 40px;
+    background-color: #000;
+    color: white;
+    padding: 9px 110px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .input[type="submit"]:hover {
+    background-color: #ccc;
+    color: black;
+    transition: .5s;
+  }
+
+  .link{
+    color: var(--link, #346BD4);
+    font-size: 16px;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+  }
+  .register{
+    margin-top: 20px;
+    text-align: center;
+    color: #858585;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+  }
+  @media (max-width:800px) {
+    .container{
+     grid-template-columns: 100%;
+     grid-template-rows: 20% 80%;
+    }
+    .login{
+      height: 80vh;
+    }
+    .form_heading{
+      text-align: center;
+    }
+    .form_subHeading{
+      text-align: center;
+    }
+  }
+  #resetMessage{
+    padding-top: 15px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  @media (max-width:460px) {
+    .heading{
+      height: 140px;
+    }
+    
+  }

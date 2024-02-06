@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Extract</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <script src="https://js.stripe.com/v3/"></script>
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                <h1>Extract</h1>
+            </a>
+
+            <!-- Nav Menu -->
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html#hero" class="active">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#pricing">Price</a></li>
+                    <li><a href="index.html#contact">Support</a></li>
+                    <li><a class="login-button" href="login.html">Login</a></li>
+                    <li><a class="logout-button" style="display:none;" onclick="logout()">Logout</a></li>
+                </ul>
+
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav><!-- End Nav Menu -->
+            <a class="btn-getstarted" href="register.html">Create An Account</a>
+            
+            <a class="manage-subscription-button btn-getstarted" style="display:none;"
+                onclick="manageSubscription()">Manage Subscription</a>
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- Hero Section - Home Page -->
+        <section id="hero" class="hero">
+
+            <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 data-aos="fade-up" data-aos-delay="100">Automatic PDF Data Extraction</h2>
+                        <p class="mb-4" data-aos="fade-up" data-aos-delay="200">Join with 4600+ Users and Extract data
+                            from thousands of PDF files automatically in minutes.</p>
+                        <a href="#" class="read-more"><span>Download for mac</span> <i
+                                class="bi bi-cloud-arrow-down-fill"></i></a>
+                        <a href="#" class="read-more"><span>Download for windows</span> <i
+                                class="bi bi-cloud-arrow-down-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- End Hero Section -->
+
+        <!-- About Section - Home Page -->
+        <section id="about" class="about">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row align-items-xl-center gy-5">
+
+                    <div class="col-xl-5 content">
+                        <h3>About Us</h3>
+                        <h2>Got Questions?</h2>
+                        <p>Your data never leaves your Mac or PC. After you install the app, point it to where the pdf
+                            files are stored and where it should save the extracted data.</p>
+                        <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                    </div>
+
+                    <div class="col-xl-7">
+                        <div class="row gy-4 icon-boxes">
+
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon-box">
+                                    <i class="bi bi-buildings"></i>
+                                    <h3>Your data is secure!</h3>
+                                    <p>Your data never leaves your Mac or PC. After you install the app, point it to
+                                        where the pdf files are stored and where it should save the extracted data.</p>
+                                </div>
+                            </div> <!-- End Icon Box -->
+
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                <div class="icon-box">
+                                    <i class="bi bi-clipboard-pulse"></i>
+                                    <h3>Your data is secure!</h3>
+                                    <p>Your data never leaves your Mac or PC. After you install the app, point it to
+                                        where the pdf files are stored and where it should save the extracted data.</p>
+                                </div>
+                            </div> <!-- End Icon Box -->
+
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                                <div class="icon-box">
+                                    <i class="bi bi-command"></i>
+                                    <h3>AI Based Extraction</h3>
+                                    <p>The app uses AI and your guidance to automatically extract data from your bank or
+                                        credit card statements, invoices, catalogues, reports, etc.</p>
+                                </div>
+                            </div> <!-- End Icon Box -->
+
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                                <div class="icon-box">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                    <h3>Your data is secure!</h3>
+                                    <p>Your data never leaves your Mac or PC. After you install the app, point it to
+                                        where the pdf files are stored and where it should save the extracted data.</p>
+                                </div>
+                            </div> <!-- End Icon Box -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section><!-- End About Section -->
+
+        <!-- Stats Section - Home Page -->
+        <section id="stats" class="stats">
+
+            <img src="assets/img/stats-bg.jpg" alt="" data-aos="fade-in">
+
+            <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="4600" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Clients</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Projects</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="1053" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Hours Of Support</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="320" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Workers</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                </div>
+
+            </div>
+
+        </section><!-- End Stats Section -->
+
+
+        <!-- Features Section - Home Page -->
+        <section id="features" class="features">
+
+            <!--  Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Features</h2>
+                <p>Every month - Perfect for offices that want to extract data from client's bank, account statements,
+                    invoices, etc.</p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4 align-items-center features-item">
+                    <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Individual Monthly Plan</h3>
+                        <p>
+                            Every month - Perfect for individuals who want to extract data from their bank, credit card,
+                            and investment account.
+                        </p>
+                        <a href="#" class="btn btn-get-started">Get Started</a>
+                    </div>
+                    <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out"
+                        data-aos-delay="100">
+                        <div class="image-stack">
+                            <img src="assets/img/features-light-1.jpg" alt="" class="stack-front">
+                            <img src="assets/img/features-light-2.jpg" alt="" class="stack-back">
+                        </div>
+                    </div>
+                </div><!-- Features Item -->
+
+                <div class="row gy-4 align-items-stretch justify-content-between features-item ">
+                    <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
+                        <img src="assets/img/features-light-3.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
+                        <h3>Enterprise Monthly Plan</h3>
+                        <p>Every month - Perfect for enterprises who want to extract data from a large number of files
+                            of different formats.</p>
+                        <a href="#" class="btn btn-get-started align-self-start">Get Started</a>
+                    </div>
+                </div><!-- Features Item -->
+
+            </div>
+
+        </section><!-- End Features Section -->
+
+        <!-- Pricing Section - Home Page -->
+        <section id="pricing" class="pricing">
+
+            <!--  Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Pricing</h2>
+                <p>Discover Your Exciting Subscription Options</p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="zoom-in" data-aos-delay="100">
+
+                <div class="row g-4">
+
+                    <div class="col-lg-4 plan">
+                        <div class="pricing-item">
+                            <h3>Individual Monthly Plan</h3>
+                            <div class="icon">
+                                <i class="bi bi-box"></i>
+                            </div>
+                            <h4><sup>$</sup>1.99<span> / month</span></h4>
+                            <ul>
+                                <li><i class="bi bi-check"></i> <span>200 file extracts per month</span></li>
+                                <li><i class="bi bi-check"></i> <span>5 extract templates</span></li>
+                                <li><i class="bi bi-check"></i> <span>Loreum Ipppsum</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span>
+                                </li>
+                            </ul>
+                            <div class="text-center text-plan"><div  class="buy-btn">Buy Now</div></div>
+                        </div>
+                    </div><!-- End Pricing Item -->
+
+                    <div class="col-lg-4 plan">
+                        <div class="pricing-item featured">
+                            <h3>Small Office Monthly Plan</h3>
+                            <div class="icon">
+                                <i class="bi bi-rocket"></i>
+                            </div>
+
+                            <h4><sup>$</sup>19.99<span> / month</span></h4>
+                            <ul>
+                                <li><i class="bi bi-check"></i> <span>1000 file extracts per month</span></li>
+                                <li><i class="bi bi-check"></i> <span>20 extract templates</span></li>
+                                <li><i class="bi bi-check"></i> <span>Loreum Ipppsum</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span>
+                                </li>
+                            </ul>
+                            <div class="text-center text-plan"><div  class="buy-btn">Buy Now</div></div>
+                        </div>
+                    </div><!-- End Pricing Item -->
+
+                    <div class="col-lg-4 plan">
+                        <div class="pricing-item">
+                            <h3>Enterprise Monthly Plan</h3>
+                            <div class="icon">
+                                <i class="bi bi-send"></i>
+                            </div>
+                            <h4><sup>$</sup>100<span> / month</span></h4>
+                            <ul>
+                                <li><i class="bi bi-check"></i> <span>Unlimited file extracts</span></li>
+                                <li><i class="bi bi-check"></i> <span>Unlimited file extracts</span></li>
+                                <li><i class="bi bi-check"></i> <span>Loreum Ipppsum</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span>
+                                </li>
+                            </ul>
+                            <div class="text-center text-plan"><a  class="buy-btn">Buy Now</a></div>
+                        </div>
+                    </div><!-- End Pricing Item -->
+
+                </div>
+
+            </div>
+
+        </section><!-- End Pricing Section -->
+
+
+
+        <!-- Contact Section - Home Page -->
+        <section id="contact" class="contact">
+
+            <!--  Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Contact</h2>
+                <p>Have any questions? We'd love to hear from you.</p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-12">
+                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <div class="row gy-4">
+
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                        required>
+                                </div>
+
+                                <div class="col-md-6 ">
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email"
+                                        required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="subject" placeholder="Subject"
+                                        required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <textarea class="form-control" name="message" rows="6" placeholder="Message"
+                                        required></textarea>
+                                </div>
+
+                                <div class="col-md-12 text-center">
+                                    <div class="loading">Loading</div>
+                                    <div class="error-message"></div>
+                                    <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                                    <button type="submit">Send Message</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div><!-- End Contact Form -->
+
+                </div>
+
+            </div>
+
+        </section><!-- End Contact Section -->
+
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+
+        <div class="container footer-top">
+            <div class="row  gy-4">
+                <div class="col-md-12">
+                    <ul>
+                        <li> <a href="#"> Privacy Notice<a>
+                        <li>
+                        <li> <a href="#"> Terms of use <a>
+                        <li>
+                        <li> © 2024 Extract. All rights reserved.
+                        <li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </footer><!-- End Footer -->
+
+    <!-- Scroll Top Button -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

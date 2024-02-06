@@ -1,0 +1,24 @@
+a.read-more {
+    background: #e84545;
+    color: #fff;
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+footer ul li {
+    display: inline;
+    padding: 0px 15px;
+}
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}

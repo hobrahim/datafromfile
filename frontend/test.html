@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Section</title>
+    <style>
+        .features {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-icon {
+            margin-right: 10px;
+            /* Adjust spacing between icon and text */
+            width: 50px;
+            /* Adjust size as per actual icon */
+            height: auto;
+        }
+
+        .feature-title {
+            font-size: 1.25em;
+            /* Adjust size to match design */
+            font-weight: bold;
+            color: #333;
+            /* Dark grey color */
+            margin: 0 0 5px 0;
+            /* Adjust spacing between title and text */
+        }
+
+        .feature-text {
+            font-size: 0.875em;
+            /* Adjust size to match design */
+            color: #333;
+            /* Dark grey color */
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+            }
+
+            .feature {
+                margin-bottom: 20px;
+                /* Adjust spacing between stacked features */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="features">
+        <div class="feature">
+            <img src="path-to-your-icon1.svg" alt="Icon 1" class="feature-icon">
+            <div>
+                <h3 class="feature-title">A growing library of Components</h3>
+                <p class="feature-text">Meticulously designed components, skillfully crafted to adhere to accessibility
+                    standards, and effortlessly customizable.</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="path-to-your-icon2.svg" alt="Icon 2" class="feature-icon">
+            <div>
+                <h3 class="feature-title">React, HTML, Tailwind, and CSS</h3>
+                <p class="feature-text">Carefully crafted for various frameworks, including React, HTML, Tailwind, and
+                    CSS, with interactive examples tailored to your needs.</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="path-to-your-icon3.svg" alt="Icon 3" class="feature-icon">
+            <div>
+                <h3 class="feature-title">Completely Adaptable</h3>
+                <p class="feature-text">Each instance is entirely responsive, meticulously crafted and executed to
+                    ensure a polished appearance on screens of all sizes.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

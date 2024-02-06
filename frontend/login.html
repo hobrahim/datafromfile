@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Extract</title>
+  <!-- Include your CSS file (page.module.css) -->
+  <link rel="stylesheet" href="./login.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="board">
+      <!-- <h1 class="heading">Extract.</h1> -->
+      <img src="./extract_white.png" class="heading" alt="logo">
+    </div>
+    <div class="login">
+      <div class="forms">
+        <h1 class="form_heading">Sign In</h1>
+        <p class="form_subHeading">Sign in to your account</p>
+        <div class="login_buttons">
+          <div class="button" id="google-sign-in-button">
+            <!-- Use an actual image file or replace with appropriate text -->
+            <img src="./google.svg" height="15" width="15" alt="google" />
+            Sign in with Google
+          </div>
+
+        </div>
+        <div class="login_card">
+          <form class="form" id="loginForm">
+            <div class="form_group">
+              <label for="login-email" class="label">Email address</label>
+              <input required name="email" id="login-email" type="email" class="input">
+            </div>
+            <div class="form_group">
+              <label for="login-password" class="label">Password</label>
+              <input required name="password" id="login-password" type="password" class="input">
+            </div>
+            <span id="error-span">
+
+            </span>
+            <!-- Link to reset password page -->
+            <a href="forget-password.html" class="link">Forgot password?</a>
+            <div class="form_group">
+              <input value="Sign In" type="submit" class="input">
+            </div>
+          </form>
+        </div>
+        <p class="register">Don't have an account? <a class="link" href="register.html">Register here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      setDoc,
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      signInWithPopup,
+      GoogleAuthProvider,
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      let firebaseConfig = {};
+
+      let app, db, auth, provider;
+      fetch("https://us-central1-extract-1-402612.cloudfunctions.net/getFirebaseConfig").then(async (res) => await res.json())
+        .then((data) => {
+          firebaseConfig = data;
+          app = initializeApp(firebaseConfig);
+          db = getFirestore();
+          auth = getAuth(app);
+          provider = new GoogleAuthProvider();
+        })
+
+
+      const emailInp = document.getElementById("login-email");
+      const passInp = document.getElementById("login-password");
+      const errorDiv = document.getElementById("error-span");
+      errorDiv.style.color = "red";
+
+      const signInUser = (e) => {
+        e.preventDefault();
+
+        signInWithEmailAndPassword(auth, emailInp.value, passInp.value)
+          .then(async (credentails) => {
+            console.log(credentails);
+            localStorage.setItem("user_email", credentails.user.email);
+            window.location.href = "index.html";
+
+
+            // fetch("https://us-central1-extract-1-402612.cloudfunctions.net/saveUserData", {
+            //   method: "POST",
+            //   headers: {
+            //     "Content-Type": "application/json",
+            //   },
+            //   body: JSON.stringify({ email: credentails.user.email }),
+            // })
+            //   .then(async (res) => await res.json())
+            //   .then((data) => {
+            //     // console.log(data);
+            //     window.location.href = "index.html";
+            //   })
+            //   .catch((error) => {
+            //   console.error("Error:", error);
+            // });
+          })
+          .catch((error) => {
+            console.log(error.code);
+            if (error.code == "auth/invalid-credential") {
+              errorDiv.innerText = "Either email or password is incorrect";
+            } else if (error.code === "auth/too-many-requests") {
+              // Too many request error
+              errorDiv.innerText = "Too many failed login attempts are made for this account. It has been temporarily disabled"
+            }
+            console.log(error.message);
+          });
+      };
+
+      loginForm.addEventListener("submit", signInUser);
+
+      const googleSignInButton = document.getElementById(
+        "google-sign-in-button"
+      );
+
+
+      googleSignInButton.addEventListener("click", () => {
+        signInWithPopup(auth, provider)
+          .then(async (result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+
+            const user = result.user;
+            const docRef = doc(db, "users", user.email);
+            const docSnap = await getDoc(docRef);
+            if (!docSnap.exists()) {
+              saveUserData(user)
+                .then(() => {
+                  localStorage.setItem("user_email", user.email);
+                  window.location.href = "index.html";
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }
+            else {
+              localStorage.setItem("user_email", user.email);
+              window.location.href = "index.html";
+            }
+
+            // fetch("https://us-central1-extract-1-402612.cloudfunctions.net/saveUserData", {
+            //   method: "POST",
+            //   headers: {
+            //     "Content-Type": "application/json",
+            //   },
+            //   credentials: 'include',
+            //   body: JSON.stringify({ email: user.email }),
+            // })
+            //   .then(async (res) => await res.json())
+            //   .then((data) => {
+            //     if (!docSnap.exists()) {
+            //       saveUserData(user)
+            //         .then(() => {
+            //           window.location.href = "index.html";
+            //         })
+            //         .catch((err) => {
+            //           console.log(err);
+            //         });
+            //     }
+            //     else {
+            //       window.location.href = "index.html";
+            //     }
+            //   })
+            //   .catch((error) => {
+            //     console.error("Error:", error);
+            //   });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(error.code, error.message);
+          });
+      });
+
+      async function saveUserData(user) {
+        console.log(user);
+        const ref = doc(db, "users", user.email);
+        await setDoc(ref, {
+          name: user.displayName,
+          email: user.email,
+          stripeCustomerId: null,
+          profilePicture: "",
+          userid: user.uid,
+        });
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract - PDF Data Extraction</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/20bd4b24d3.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <header >
+        <div class="navbar">
+            <div class="logo-div">
+                <a href="#"><img src="/logo.png" alt="Logo" /></a>
+            </div>
+        
+            <button class="hamburger-icon" onclick="toggleNav()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <div class="sub-links" id="navLinks">
+                <a href="#support" onclick="closeNav()">Support</a>
+                <a href="#pricing" onclick="closeNav()">Plans</a>
+                <a class="button4" href="/login" onclick="closeNav()">Login</a>
+                <a href="/signup" class="button-account" onclick="closeNav()">
+                    <button class="createButton">Create free account</button>
+                </a>
+                <button class="logout-button button3" style="display:none;" onclick="logout()">Logout</button>
+                <button class="manage-subscription-button button3" style="display:none;"
+                        onclick="window.location.href='/manage-subscription'">Manage Subscription</button>
+            </div>
+        </div>
+        
+
+        <div class="main-section" >
+            <div class="left-sec">
+                <div class="heading-div">Automatic PDF Data Extraction</div>
+                <div class="people">
+
+
+                    Extract data from thousands of PDF files automatically in minutes. Imagine all your
+                    bank and credit cards statements consolidated in Excel spreadsheets
+
+
+
+                </div>
+                <div class="external-buttons">
+
+                    <div class="support-button">
+                        <img src="/downloadWhite.svg">
+                        <div class="macBtn">Download for mac</div>
+                    </div>
+                    <div class="button-div">
+                        <img src="/download.svg">
+                        <div id="downloadButton">
+
+                            Download for windows
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="right-sec" >
+                <div class="banner">
+                    <video className='video-main' autoPlay loop width="100%" height="100%" hidecontrols muted>
+                        <source src="/3.mp4">
+                        </source>
+                    </video>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="sub-sections">
+            <h1>How does it work?</h1>
+            <div class="main-section2">
+
+                <div class="right-sec2">
+                    <div class="banner2">
+                        <video className='video-main' autoPlay loop width="100%" height="100%" hidecontrols muted>
+                            <source src="/3.mp4">
+                            </source>
+                        </video>
+                    </div>
+
+                </div>
+                <div class="left-sec2">
+                    <div class="heading-div2">1.Your data is secure! </div>
+                    <div class="sub-desc">
+                        Your data never leaves your Mac or PC. After you install the app, point it to where the pdf
+                        files are stored and where it should save the extracted data.
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="main-section3">
+                <div class="left-sec2">
+                    <div class="heading-div3">2.AI Based Extraction </div>
+                    <div class="sub-desc2">
+
+
+                        The app uses AI and your guidance to automatically extract data from your bank or credit
+                        card statements, invoices, catalogues, reports, etc.
+
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="right-sec2">
+                    <div class="banner2">
+                        <video className='video-main' autoPlay loop width="100%" height="100%" hidecontrols muted>
+                            <source src="/3.mp4">
+                            </source>
+                        </video>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="main-section2">
+
+                <div class="right-sec2">
+                    <div class="banner2">
+                        <video className='video-main' autoPlay loop width="100%" height="100%" hidecontrols muted>
+                            <source src="/3.mp4">
+                            </source>
+                        </video>
+                    </div>
+                </div>
+                <div class="left-sec2">
+                    <div class="heading-div2">3.Your data is secure! </div>
+                    <div class="sub-desc">
+
+                        Your data never leaves your Mac or PC. After you install the app, point it to where the pdf
+                        files are stored and where it should save the extracted data.
+
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="pricing" id="pricing">
+            <section id="subscription">
+                <div class="main-pricing-header">
+                    <div class="pricing-header" data-aos="fade-up">
+                        <h2>Discover Your Exciting <span class="membership">Subscription Options</span></h2>
+                        <span class="desc-mem">Choose your pricing plan</span>
+                        <div class="pricing-toggle">
+                            <span class="toggle-text">Pay Monthly</span>
+                            <label class="switch">
+                                <input type="checkbox" id="plan-toggle">
+                                <span class="slider round"></span>
+                            </label>
+                            <span class="toggle-text">Pay Yearly</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="discount">
+                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="107" height="88" viewBox="0 0 107 88"
+                        fill="none">
+                        <path
+                            d="M95.4465 61.5974C83.1574 64.6611 68.4839 65.2432 57.684 57.5059C50.7821 52.5613 47.1172 42.5627 49.6965 34.4471C52.1326 26.7825 57.8213 20.0481 66.3458 20.2534C70.7891 20.3604 74.6203 22.4047 75.4291 27.084C76.6649 34.2328 69.5332 41.6308 63.863 44.7404C46.1673 54.4451 21.1342 53.9051 4.27699 42.6406"
+                            stroke="#1D4ED8" stroke-width="3" stroke-linecap="round" />
+                        <path d="M11.7068 55.8447C9.64482 52.9634 5.14208 46.2418 3.62681 42.4054" stroke="#1D4ED8"
+                            stroke-width="3" stroke-linecap="round" />
+                        <path d="M3.62695 42.4054C7.1396 41.942 15.124 40.6362 18.9603 39.1209" stroke="#1D4ED8"
+                            stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                    <p> Save 25%</p>
+                </div>
+
+                <div class="plans-container">
+                    <div data-aos="fade-right" class="plan-monthly plan">
+                        <h3 class="title-price">Individual Monthly Plan</h3>
+                        <p class="title-desc">Every month - Perfect for individuals who want to extract data from their
+                            bank, credit
+                            card, and investment account.</p>
+                        <div class="sub-prices">
+                            $1.99
+                            <span>
+                                /Month
+                            </span>
+                        </div>
+                        <button class="select-plan" data-plan="Individual Monthly Plan">
+                            <span>Select Now</span>
+                        </button>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                200 file extracts per month
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                5 extract templates
+
+                            </div>
+                        </div>
+
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="middle-card plan">
+                        <h3 class="middle-title-price">Small Office Monthly Plan</h3>
+                        <p class="middle-title-desc">Every month - Perfect for offices that want to extract data from
+                            client's bank, account
+                            statements, invoices, etc.</p>
+                        <div class="middle-sub-prices">
+                            $19.99
+                            <span>
+                                /Month
+                            </span>
+                        </div>
+                        <button class="select-plan" data-plan="Small Office Monthly Plan">
+                            <span>Select Now</span>
+                        </button>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                1000 file extracts per month
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                20 extract templates
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div data-aos="fade-left" class="plan-monthly plan">
+                        <h3 class="title-price">Enterprise Monthly Plan</h3>
+                        <p class="title-desc">Every month - Perfect for enterprises who want to extract data from a
+                            large number of files
+                            of different formats.</p>
+                        <div class="sub-prices">
+                            $100
+                            <span>
+                                /Month
+                            </span>
+                        </div>
+                        <button class="select-plan" data-plan="Individual Monthly Plan">
+                            <span>Select Now</span>
+                        </button>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                Unlimited file extracts
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                Unlimited templates
+
+                            </div>
+                        </div>
+
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                5 custom templates per month
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" class="plan-yearly plan">
+                        <h3 class="title-price">Individual Yearly Plan</h3>
+                        <p class="title-desc">Perfect for individuals who want long-term data extraction capabilities.
+                        </p>
+                        <div class="sub-prices">
+                            $19.99
+                            <span>
+                                /Year
+                            </span>
+                        </div>
+                        <button class="select-plan" data-plan="Individual Yearly Plan">
+                            <span>Select Now</span>
+                        </button>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                200 file extracts per month
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                5 extract templates
+
+                            </div>
+                        </div>
+
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="yearly-middle-card plan">
+                        <h3 class="middle-title-price">Small Office Yearly Plan</h3>
+                        <p class="middle-title-desc">Every year - Ideal for small offices with regular data extraction
+                            needs.</p>
+                        <div class="middle-sub-prices">
+                            $189.99
+                            <span>
+                                /Year
+                            </span>
+                        </div>
+                        <button class="select-plan" data-plan="Small Office Yearly Plan">
+                            <span>Select Now</span>
+                        </button>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                200 file extracts per month
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                50 extract templates
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="middle-desc-bullet-points">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div data-aos="fade-right" class="plan-yearly plan">
+                        <h3 class="title-price">Enterprise Yearly Plan</h3>
+                        <p class="title-desc">The ultimate solution for large-scale, diverse data extraction
+                            requirements.</p>
+                        <div class="sub-prices">
+                            $1,000
+                            <span>
+                                /Year
+                            </span>
+                        </div>
+                        <button class="select-plan" data-plan="Enterprise Yearly Plan">
+                            <span>Select Now</span>
+                        </button>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                Unlimited file extracts
+
+                            </div>
+                        </div>
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                Unlimited templates
+
+                            </div>
+                        </div>
+
+                        <div class="positive-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-tick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.8162 4.20701C14.0701 4.47369 14.0597 4.89568 13.793 5.14954L6.08929 12.4829C5.95773 12.6081 5.78078 12.6742 5.59933 12.666C5.41788 12.6577 5.24766 12.5758 5.12803 12.4391L2.16506 9.05451C1.92254 8.77747 1.95052 8.35629 2.22755 8.11377C2.50459 7.87125 2.92577 7.89923 3.16829 8.17626L5.67342 11.0379L12.8737 4.1838C13.1404 3.92994 13.5624 3.94033 13.8162 4.20701Z"
+                                            fill="#1D4ED8" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points">
+                                5 custom templates per month
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                        <div class="negative-bullet-points">
+                            <div>
+                                <div class="icon-circle">
+
+                                </div>
+                                <div class="icon-cross">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Icons">
+                                            <path id="Shape"
+                                                d="M12.2422 12.2426C12.5025 11.9823 12.5025 11.5602 12.2422 11.2998L8.94281 8.00046L12.2431 4.70018C12.5034 4.43983 12.5034 4.01772 12.2431 3.75737C11.9827 3.49702 11.5606 3.49702 11.3003 3.75737L8 7.05765L4.69972 3.75737C4.43937 3.49702 4.01726 3.49702 3.75691 3.75737C3.49656 4.01771 3.49656 4.43983 3.75691 4.70017L7.05719 8.00046L3.75781 11.2998C3.49746 11.5602 3.49746 11.9823 3.75781 12.2426C4.01816 12.503 4.44027 12.503 4.70062 12.2426L8 8.94327L11.2994 12.2426C11.5597 12.503 11.9818 12.503 12.2422 12.2426Z"
+                                                fill="#191D23" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="desc-bullet-points-neg">
+                                Loreum Ipppsum
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="contact-form" id="support" >
+            <h1>Got Questions?</h1>
+            <div class="container">
+                <div class="main">
+                    <div class="content">
+                        <h2>Contact Us</h2>
+                        <form>
+                            <input type="text" name="name" placeholder="Enter Your Name">
+                            <input type="email" name="name" placeholder="Enter Your Email">
+                            <textarea name="message" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn">Send<i class="fa-solid fa-paper-plane space"></i></button>
+
+                        </form>
+                    </div>
+                    <div class="form-img">
+                        <img src="Envelope.gif" alt="Form-Image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+    <footer class="footer">
+       
+
+
+          
+           
+           
+
+      
+        <div class="footer-copy">
+            <p>&copy; 2024 Extract. All rights reserved.</p>
+        </div>
+        <div class="footer-legal">
+            <a href="#">Privacy policy</a></li>
+                 <a href="#">Terms of service</a></li>
+                  
+                </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Extract</title>
+  <!-- Include your CSS file (page.module.css) -->
+  <link rel="stylesheet" href="./signup.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="board">
+      <!-- <h1 class="heading">Extract.</h1> -->
+      <img src="./extract_white.png" class="heading" alt="logo">
+    </div>
+    <div class="login auth-form">
+      <div class="forms">
+        <h1 class="form_heading">Sign Up</h1>
+        <p class="form_subHeading">Sign Up to your account</p>
+        <div class="login_buttons">
+          <div class="button" id="google-sign-in-button">
+            <!-- Use an actual image file or replace with appropriate text -->
+            <img src="./google.svg" height="15" width="15" alt="google" />
+            Sign in with Google
+          </div>
+
+        </div>
+        <div class="login_card">
+          <form class="form" id="signupForm">
+            <div class="form_group">
+              <label for="signup-name" class="label">Name</label>
+              <input required name="email" id="signup-name" type="text" class="input">
+            </div>
+            <div class="form_group">
+              <label for="signup-email" class="label">Email address</label>
+              <input required name="email" id="signup-email" type="email" class="input">
+            </div>
+            <div class="form_group">
+              <label for="signup-password" class="label">Password</label>
+              <input required name="password" id="signup-password" type="password" class="input">
+            </div>
+            <div id="errorSpan">
+
+            </div>
+
+            <div class="form_group">
+              <input value="Sign Up" type="submit" class="input">
+            </div>
+
+          </form>
+        </div>
+        <p class="register">Already have an account? <a class="link" href="login.html">Login</a></p>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDoc,
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithPopup,
+      GoogleAuthProvider,
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    let firebaseConfig = {};
+
+    let app, db, auth, provider;
+    fetch("https://us-central1-extract-1-402612.cloudfunctions.net/getFirebaseConfig").then(async (res) => await res.json())
+      .then((data) => {
+        firebaseConfig = data;
+        app = initializeApp(firebaseConfig);
+        db = getFirestore();
+        auth = getAuth(app);
+        provider = new GoogleAuthProvider();
+      })
+
+    const emailInp = document.getElementById('signup-email');
+    const passInp = document.getElementById('signup-password');
+    const nameInp = document.getElementById('signup-name');
+    const errorSpan = document.getElementById('errorSpan');
+    errorSpan.style.color = "red";
+
+    const registerUser = (e) => {
+      e.preventDefault();
+
+      createUserWithEmailAndPassword(auth, emailInp.value, passInp.value)
+        .then((credentails) => {
+          const ref = doc(db, "users", credentails.user.email)
+          setDoc(ref, {
+            name: nameInp.value,
+            email: emailInp.value,
+            stripeCustomerId: null,
+            profilePicture: "",
+            userid: credentails.user.uid,
+          })
+            .then(() => {
+              window.location.href = "login.html"
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        })
+        .catch((error) => {
+          console.log(error.code);
+          if (error.code === "auth/email-already-in-use") {
+            errorSpan.innerText = "This email is already in use";
+          } else if (error.code === "auth/weak-password") {
+            errorSpan.innerText = "Minimum length of the password should be 6"
+          }
+          console.log(error.message);
+        })
+    }
+
+    signupForm.addEventListener('submit', registerUser);
+
+    const googleSignInButton = document.getElementById(
+      "google-sign-in-button"
+    );
+
+
+    googleSignInButton.addEventListener("click", () => {
+      signInWithPopup(auth, provider)
+        .then(async (result) => {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+
+          const user = result.user;
+          const docRef = doc(db, "users", user.email);
+          const docSnap = await getDoc(docRef);
+
+          // fetch("https://us-central1-extract-1-402612.cloudfunctions.net/saveUserData", {
+          //   method: "POST",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //   },
+          //   body: JSON.stringify({ email: user.email }),
+          // })
+          //   .then(async (res) => await res.json())
+          //   .then((data) => {
+          if (!docSnap.exists()) {
+            saveUserData(user)
+              .then(() => {
+                window.location.href = "index.html";
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+          else {
+            window.location.href = "index.html";
+          }
+          // })
+          // .catch((error) => {
+          //   console.error("Error:", error);
+          // });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(error.code, error.message);
+        });
+    });
+
+    async function saveUserData(user) {
+      console.log(user);
+      const ref = doc(db, "users", user.email);
+      await setDoc(ref, {
+        name: user.displayName,
+        email: user.email,
+        stripeCustomerId: null,
+        profilePicture: "",
+        userid: user.uid,
+      });
+    }
+  </script>
+
+
+</body>
+
+</html>
