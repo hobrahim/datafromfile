@@ -22,3 +22,4 @@ jobs:
         with: 
           path: 'frontend'
           destination: 'datafromfile.com'
+          parent: false
