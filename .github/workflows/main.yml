@@ -22,8 +22,3 @@ jobs:
         with: 
           path: 'frontend'
           destination: 'datafromfile.com'
-          
-      - name: Use uploaded files output
-        uses: foo/bar@v1
-        with:
-          files: ${{ steps.upload-folder.outputs.uploaded }}
