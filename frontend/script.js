@@ -20,6 +20,7 @@ function checkLoginStatusAndUpdateUI() {
   const manageSubButton = document.querySelector(
     ".manage-subscription-button"
   );
+  
 
   if (storedUserMail) {
     button4.style.display = "none";
