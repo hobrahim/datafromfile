@@ -12,13 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Set up Google Cloud SDK
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@v0
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v2
         with:
-          service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
-          project_id: extract-1-402612
-          export_default_credentials: true
-
-      - name: Deploy to Cloud Storage
-        run: |
-          gsutil -m rsync -r ./frontend/* gs://datafromfile.com
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+          
+      - name: Upload folder to Cloud Storage
+        uses: google-github-actions/upload-cloud-storage@v2
+        with: 
+          path: 'frontend'
+          destination: 'datafromfile.com'
+          
+      - name: Use uploaded files output
+        uses: foo/bar@v1
+        with:
+          files: ${{ steps.upload-folder.outputs.uploaded }}
