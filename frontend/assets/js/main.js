@@ -251,6 +251,7 @@ function setupPlanSelectionHandlers() {
   planButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const planName = this.parentNode.querySelector("h3").innerText;
+	  
       handlePlanSelection(planName);
     });
   });

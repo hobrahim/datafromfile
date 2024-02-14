@@ -81,7 +81,7 @@ function setupPlanSelectionHandlers() {
   });
 }
 
-function handlePlanSelection(planName) {
+function handlePlanSelection(planName) {	
   // fetch("https://us-central1-extract-1-402612.cloudfunctions.net/check-login")
   // .then((response) => response.json())
   // .then((data) => {
