@@ -371,3 +371,37 @@ function toggleVisibility(elements, show) {
     element.style.display = show ? "flex" : "none";
   });
 }
+
+function show(id) {
+	document.getElementById(id).style.display = "block";
+}
+function hide(id) {	
+	document.getElementById(id).style.display = "none";
+}
+
+function click(id,clbk) {
+	document.getElementById(id).addEventListener("click", clbk);	
+}
+
+function showYearly(){
+	hide('IMP');
+	hide('SOMP');
+	hide("EMP");
+	show('IYP');
+	show('SOYP');
+	show("EYP");	
+}
+function showMonthly(){
+	hide('IYP');
+	hide('SOYP');
+	hide("EYP");
+	show('IMP');
+	show('SOMP');
+	show("EMP");	
+}
+
+click('yp',showYearly);
+click('mp',showMonthly);
+
+//showYearly();
+showMonthly();

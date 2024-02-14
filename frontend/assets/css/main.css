@@ -66,6 +66,20 @@ a:hover {
   text-decoration: none;
 }
 
+        /* Initial style for the text */
+        .hover-effect {
+            font-size: 16px;
+            font-weight: normal;
+            transition: font-size 0.3s, font-weight 0.3s;
+        }
+
+        /* Style on hover */
+        .hover-effect:hover {
+            font-size: 20px; /* Increase font size on hover */
+            font-weight: bold; /* Make text bold on hover */
+        }
+
+
 h1,
 h2,
 h3,

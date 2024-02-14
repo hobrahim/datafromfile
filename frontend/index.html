@@ -192,52 +192,6 @@
         </section><!-- End Stats Section -->
 
 
-        <!-- Features Section - Home Page -->
-        <section id="features" class="features">
-
-            <!--  Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Features</h2>
-                <p>Every month - Perfect for offices that want to extract data from client's bank, account statements,
-                    invoices, etc.</p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-
-                <div class="row gy-4 align-items-center features-item">
-                    <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-                        <h3>Individual Monthly Plan</h3>
-                        <p>
-                            Every month - Perfect for individuals who want to extract data from their bank, credit card,
-                            and investment account.
-                        </p>
-                        <a href="#" class="btn btn-get-started">Get Started</a>
-                    </div>
-                    <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out"
-                        data-aos-delay="100">
-                        <div class="image-stack">
-                            <img src="assets/img/features-light-1.jpg" alt="" class="stack-front">
-                            <img src="assets/img/features-light-2.jpg" alt="" class="stack-back">
-                        </div>
-                    </div>
-                </div><!-- Features Item -->
-
-                <div class="row gy-4 align-items-stretch justify-content-between features-item ">
-                    <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
-                        <img src="assets/img/features-light-3.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
-                        <h3>Enterprise Monthly Plan</h3>
-                        <p>Every month - Perfect for enterprises who want to extract data from a large number of files
-                            of different formats.</p>
-                        <a href="#" class="btn btn-get-started align-self-start">Get Started</a>
-                    </div>
-                </div><!-- Features Item -->
-
-            </div>
-
-        </section><!-- End Features Section -->
-
         <!-- Pricing Section - Home Page -->
         <section id="pricing" class="pricing">
 
@@ -245,6 +199,8 @@
             <div class="container section-title" data-aos="fade-up">
                 <h2>Pricing</h2>
                 <p>Discover Your Exciting Subscription Options</p>
+				<p><span id='yp' class='hover-effect'>Save with a yearly plan</span>, 
+				<span id='mp'  class='hover-effect'>or pay a low monthly subscription</span></p>  
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="zoom-in" data-aos-delay="100">
@@ -252,8 +208,9 @@
                 <div class="row g-4">
 
                     <div class="col-lg-4 plan">
-                        <div class="pricing-item">
+                        <div id="IMP" class="pricing-item">
                             <h3>Individual Monthly Plan</h3>
+							
                             <div class="icon">
                                 <i class="bi bi-box"></i>
                             </div>
@@ -268,10 +225,29 @@
                             </ul>
                             <div class="text-center text-plan"><div  class="buy-btn">Buy Now</div></div>
                         </div>
+                        <div id="IYP" class="pricing-item">
+                            <h3>Individual Yearly Plan</h3>
+							
+                            <div class="icon">
+                                <i class="bi bi-box"></i>
+                            </div>
+                            <h4><sup>$</sup>199.99<span> / year</span></h4>
+                            <ul>
+                                <li><i class="bi bi-check"></i> <span>200 file extracts per month</span></li>
+                                <li><i class="bi bi-check"></i> <span>5 extract templates</span></li>
+                                <li><i class="bi bi-check"></i> <span>Loreum Ipppsum</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span>
+                                </li>
+                            </ul>
+                            <div class="text-center text-plan"><div  class="buy-btn">Buy Now</div></div>
+                        </div>						
+						
+						
                     </div><!-- End Pricing Item -->
 
                     <div class="col-lg-4 plan">
-                        <div class="pricing-item featured">
+                        <div id="SOMP" class="pricing-item featured">
                             <h3>Small Office Monthly Plan</h3>
                             <div class="icon">
                                 <i class="bi bi-rocket"></i>
@@ -288,10 +264,28 @@
                             </ul>
                             <div class="text-center text-plan"><div  class="buy-btn">Buy Now</div></div>
                         </div>
+                        <div id="SOYP" class="pricing-item featured">
+                            <h3>Small Office Yearly Plan</h3>
+                            <div class="icon">
+                                <i class="bi bi-rocket"></i>
+                            </div>
+
+                            <h4><sup>$</sup>2000<span> / year</span></h4>
+                            <ul>
+                                <li><i class="bi bi-check"></i> <span>1000 file extracts per month</span></li>
+                                <li><i class="bi bi-check"></i> <span>20 extract templates</span></li>
+                                <li><i class="bi bi-check"></i> <span>Loreum Ipppsum</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span>
+                                </li>
+                            </ul>
+                            <div class="text-center text-plan"><div  class="buy-btn">Buy Now</div></div>
+                        </div>						
+						
                     </div><!-- End Pricing Item -->
 
                     <div class="col-lg-4 plan">
-                        <div class="pricing-item">
+                        <div id="EMP" class="pricing-item">
                             <h3>Enterprise Monthly Plan</h3>
                             <div class="icon">
                                 <i class="bi bi-send"></i>
@@ -307,6 +301,22 @@
                             </ul>
                             <div class="text-center text-plan"><a  class="buy-btn">Buy Now</a></div>
                         </div>
+                        <div id="EYP" class="pricing-item">
+                            <h3>Enterprise Yearly Plan</h3>
+                            <div class="icon">
+                                <i class="bi bi-send"></i>
+                            </div>
+                            <h4><sup>$</sup>10000<span> / year</span></h4>
+                            <ul>
+                                <li><i class="bi bi-check"></i> <span>Unlimited file extracts</span></li>
+                                <li><i class="bi bi-check"></i> <span>Unlimited file extracts</span></li>
+                                <li><i class="bi bi-check"></i> <span>Loreum Ipppsum</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span>
+                                </li>
+                            </ul>
+                            <div class="text-center text-plan"><a  class="buy-btn">Buy Now</a></div>
+                        </div>						
                     </div><!-- End Pricing Item -->
 
                 </div>
